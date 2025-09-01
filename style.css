@@ -1,258 +1,195 @@
 :root {
-    --primary: #4361ee;
-    --primary-dark: #3a56d4;
-    --secondary: #7209b7;
-    --light: #f8f9fa;
-    --dark: #212529;
-    --gray: #6c757d;
-    --success: #4cc9f0;
-    --warning: #f72585;
-    --border-radius: 12px;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --primaryText: #2c3e50;
+    --secondaryText: #7f8c8d;
+    --primaryBG: #ffffff;
+    --secondaryBG: #f5f7fa;
+    --selected: #ef5743;
+    --accent: #3498db;
+    --light: #ecf0f1;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --transition: all 0.3s ease;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: var(--dark);
-    line-height: 1.6;
-    min-height: 100vh;
-    padding: 0;
     margin: 0;
-}
-
-main {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-
-.header h1 {
-    color: var(--primary);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.header .group-info {
-    color: var(--gray);
-    font-size: 0.9rem;
+    padding: 0;
+    background-color: var(--secondaryBG);
+    color: var(--primaryText);
+    line-height: 1.6;
 }
 
 .weekday_list {
+    padding: 15px 10px;
     display: flex;
-    overflow-x: auto;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    margin-bottom: 1.5rem;
-    scrollbar-width: thin;
-}
-
-.weekday_list::-webkit-scrollbar {
-    height: 6px;
-}
-
-.weekday_list::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 3px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
 }
 
 .weekday {
-    flex: 0 0 auto;
-    width: 70px;
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 0.75rem;
+    align-content: center;
+    flex: 1 1;
+    background: var(--primaryBG);
+    border-radius: 12px;
+    padding: 12px 8px;
+    box-shadow: var(--shadow);
     text-align: center;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: var(--shadow);
+    min-width: 80px;
+    border: 2px solid transparent;
 }
 
 .weekday:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .weekday.selected {
-    background: var(--primary);
+    border-color: var(--selected);
+    background: linear-gradient(135deg, #3498db 0%, #4a6fa5 100%);
+    color: white;
+}
+
+.weekday.selected h2,
+.weekday.selected p {
     color: white;
 }
 
 .weekday h2 {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primaryText);
+    margin-bottom: 5px;
 }
 
 .weekday p {
-    font-size: 0.8rem;
     margin: 0;
-}
-
-.arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: var(--primary);
-    cursor: pointer;
-    padding: 0 0.5rem;
-}
-
-.timing_container {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-}
-
-.timing_text {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-}
-
-.current-time {
-    font-size: 0.9rem;
-    color: var(--gray);
+    font-size: 12px;
+    color: var(--secondaryText);
 }
 
 .lesson_list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    padding: 15px;
 }
 
 .lesson {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 1.25rem;
+    background: var(--primaryBG);
+    padding: 18px;
+    margin-bottom: 16px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid var(--accent);
 }
 
 .lesson:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.lesson.selected {
-    border-left: 4px solid var(--warning);
-    background: linear-gradient(135deg, #fff 0%, #f8f0fc 100%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .lesson h2 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    color: var(--dark);
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primaryText);
 }
 
 .lesson_details {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    align-items: center;
 }
 
 .time {
-    background: var(--primary);
-    color: white;
-    padding: 0.3rem 0.75rem;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--primaryText);
+    background: var(--light);
+    padding: 6px 12px;
     border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
 }
 
 .additional_info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    flex: 1;
+    font-size: 14px;
     text-align: right;
+    align-content: center;
 }
 
-.additional_info p {
-    font-size: 0.9rem;
-    color: var(--gray);
-    margin: 0;
+.lesson_details p {
+    margin: 4px 0;
+    color: var(--secondaryText);
 }
 
-.lesson-progress {
-    height: 5px;
-    background: #e9ecef;
-    border-radius: 5px;
-    margin-top: 1rem;
-    overflow: hidden;
+.selected {
+    border: 2px solid var(--selected);
+    background: linear-gradient(to right, rgba(239, 87, 67, 0.05), transparent);
 }
 
-.progress-bar {
-    height: 100%;
-    background: var(--success);
-    border-radius: 5px;
-    width: 0%;
-    transition: width 0.5s ease;
+.timing_text {
+    color: var(--primaryText);
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px;
+    background: var(--primaryBG);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.timing_text.highlight {
+    color: var(--selected);
 }
 
 footer {
+    font-size: 12px;
     text-align: center;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    color: var(--gray);
-    font-size: 0.9rem;
+    padding: 25px 0;
+    color: var(--secondaryText);
 }
 
 footer a {
-    color: var(--primary);
     text-decoration: none;
+    color: var(--accent);
     transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
 }
 
 footer a:hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 2rem;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    color: var(--gray);
+    color: var(--selected);
 }
 
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-    main {
-        padding: 0.5rem;
+    .weekday_list {
+        gap: 5px;
     }
     
     .weekday {
-        width: 60px;
-        padding: 0.5rem;
+        min-width: 70px;
+        padding: 10px 5px;
+    }
+    
+    .weekday h2 {
+        font-size: 14px;
     }
     
     .lesson_details {
         flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
     
     .additional_info {
@@ -260,35 +197,44 @@ footer a:hover {
     }
 }
 
+@media (max-width: 480px) {
+    .weekday_list {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+    }
+    
+    .weekday {
+        flex: 0 0 auto;
+        min-width: 65px;
+    }
+    
+    .lesson {
+        padding: 15px;
+    }
+    
+    .lesson h2 {
+        font-size: 16px;
+    }
+}
+
 /* Анимации */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 .lesson {
     animation: fadeIn 0.4s ease forwards;
 }
 
-/* Темная тема */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --light: #121212;
-        --dark: #f8f9fa;
-        --gray: #adb5bd;
-    }
-    
-    body {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        color: var(--dark);
-    }
-    
-    .header, .timing_container, .lesson, .weekday, .empty-state {
-        background: #1e293b;
-        color: var(--dark);
-    }
-    
-    .lesson.selected {
-        background: linear-gradient(135deg, #1e293b 0%, #2d3748 100%);
-    }
-}
+.lesson:nth-child(2) { animation-delay: 0.1s; }
+.lesson:nth-child(3) { animation-delay: 0.2s; }
+.lesson:nth-child(4) { animation-delay: 0.3s; }
+.lesson:nth-child(5) { animation-delay: 0.4s; }

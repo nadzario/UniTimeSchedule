@@ -15,8 +15,6 @@ async function init() {
     registerServiceWorker()
 }
 
-
-
 function reload(selectedWeekdayIndex = -1, selectedWeekIndex = -1) {
     if (document.app !== undefined) { // reload from existing app instance
         if (selectedWeekdayIndex == -1) selectedWeekdayIndex = document.app.selectedWeekdayIndex;
@@ -171,38 +169,6 @@ class App {
         
         const teacherParagraph = document.createElement('p');
         teacherParagraph.textContent = lesson.teacher;
-
-        if (highlighted) {
-            const progressDiv = document.createElement('div');
-            progressDiv.classList.add('lesson-progress');
-            
-            const progressBar = document.createElement('div');
-            progressBar.classList.add('progress-bar');
-            progressDiv.appendChild(progressBar);
-            
-            lessonDiv.appendChild(progressDiv);
-            
-            // Обновляем прогресс-бар каждую минуту
-            const updateProgress = () => {
-                const now = new Date();
-                const start = new Date(`${now.toDateString()} ${lesson.start_time}`);
-                const end = new Date(`${now.toDateString()} ${lesson.end_time}`);
-                const totalDuration = end - start;
-                const elapsed = now - start;
-                
-                if (elapsed > 0 && elapsed < totalDuration) {
-                const percentage = (elapsed / totalDuration) * 100;
-                progressBar.style.width = `${percentage}%`;
-                } else if (elapsed >= totalDuration) {
-                progressBar.style.width = '100%';
-                } else {
-                progressBar.style.width = '0%';
-                }
-            };
-            
-            updateProgress();
-            setInterval(updateProgress, 60000);
-        }
         
 
         
@@ -318,11 +284,6 @@ class App {
     }
 
     displaySchedule() {
-
-        const now = new Date();
-        const timeString = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-        document.getElementById("current_time").textContent = `Текущее время: ${timeString}`;
-
         this.removeLessons();
 
         const selectedDaySchedule = this.schedule.schedule[this.selectedWeekIndex][
