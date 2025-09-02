@@ -16,5 +16,6 @@
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#463f3a",
-    "background_color": "#d3ccc4"
+    "background_color": "#d3ccc4",
+    "categories": ["education", "productivity"]
 }

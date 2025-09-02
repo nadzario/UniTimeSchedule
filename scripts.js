@@ -1,5 +1,16 @@
 
 async function init() {
+
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeToggleButton(savedTheme);
+    }
+    
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+
     const preferenses = loadPreferenses();
 
     if (preferenses != null) {
@@ -13,6 +24,20 @@ async function init() {
 
     setInterval(reload, 60000); // update every minute to keep text accurate
     registerServiceWorker()
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeToggleButton(newTheme);
+}
+
+function updateThemeToggleButton(theme) {
+    const button = document.getElementById('themeToggle');
+    button.textContent = theme === 'light' ? '🌙' : '☀️';
 }
 
 function reload(selectedWeekdayIndex = -1, selectedWeekIndex = -1) {
